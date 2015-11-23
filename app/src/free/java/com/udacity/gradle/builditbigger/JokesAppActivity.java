@@ -77,6 +77,7 @@ public class JokesAppActivity extends AppCompatActivity implements EndpointsAsyn
     }
 
     public void tellJoke(View view){
+        progressBar.setVisibility(View.VISIBLE);
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         } else {
@@ -86,7 +87,6 @@ public class JokesAppActivity extends AppCompatActivity implements EndpointsAsyn
 
     @SuppressWarnings("unchecked")
     private void beginJoke() {
-        progressBar.setVisibility(View.GONE);
         new EndpointsAsyncTask(this).execute();
         //STEP 1
         //Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
@@ -94,7 +94,7 @@ public class JokesAppActivity extends AppCompatActivity implements EndpointsAsyn
 
     @Override
     public void onComplete(String result) {
-        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
         Intent intent = new Intent(this, JokesDisplayActivity.class);
         intent.putExtra(JokesDisplayActivity.JOKE_TEXT, result);
         startActivity(intent);

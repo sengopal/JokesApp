@@ -47,7 +47,8 @@ dependencies {
     compile project(':jokesandroidlib')
     compile project(path: ':jokescloud', configuration: 'android-endpoints')
     compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.google.android.gms:play-services:8.3.0'
+    //Need only for the free variant
+    freeCompile 'com.google.android.gms:play-services:8.3.0'
     compile 'com.google.appengine:appengine-api-1.0-sdk:1.9.18'
     compile 'com.android.support:design:23.1.1'
 }
